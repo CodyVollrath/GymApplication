@@ -1,7 +1,12 @@
-#include <iostream>
-using namespace std;
+#include <wx/wx.h>
+#include "LoginFrame.h"
+class App : public wxApp {
+public:
+    bool OnInit() {
+        LoginFrame* window = new LoginFrame(NULL, wxID_ANY, "GUI Test", wxDefaultPosition, wxSize(300, 400));
+        window->Show();
+        return true;
+    }
+};
 
-int main() {
-	cout << "Hello World";
-	return 0;
-}
+wxIMPLEMENT_APP(App);
