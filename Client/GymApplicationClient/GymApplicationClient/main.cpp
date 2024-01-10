@@ -1,6 +1,5 @@
 #include <wx/wx.h>
 #include "LoginFrame.h"
-
 class App : public wxApp {
 public:
     bool OnInit() {
