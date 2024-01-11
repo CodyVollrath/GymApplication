@@ -24,6 +24,9 @@
 #include <wx/panel.h>
 #include <wx/frame.h>
 
+// Our Headers
+#include "LoginController.h"
+
 ///////////////////////////////////////////////////////////////////////////
 
 
@@ -33,7 +36,9 @@
 class LoginFrame : public wxFrame
 {
 private:
-
+	LoginController* loginController;
+	void OnSubmitBtnClicked(wxCommandEvent& event);
+	wxDECLARE_EVENT_TABLE();
 protected:
 	wxPanel* mainPanel;
 	wxStaticText* usernameLbl;

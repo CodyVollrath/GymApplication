@@ -1,7 +1,17 @@
 #include "LoginFrame.h"
 
+enum ids {
+	SUBMIT_BTN = 1
+};
+
+wxBEGIN_EVENT_TABLE(LoginFrame, wxFrame)
+EVT_BUTTON(SUBMIT_BTN, LoginFrame::OnSubmitBtnClicked)
+wxEND_EVENT_TABLE()
+
 LoginFrame::LoginFrame(wxWindow* parent, wxWindowID id, const wxString& title, const wxPoint& pos, const wxSize& size, long style) : wxFrame(parent, id, title, pos, size, style)
 {
+	this->loginController = new LoginController();
+
 	this->SetSizeHints(wxDefaultSize, wxDefaultSize);
 
 	wxBoxSizer* mainSizer;
@@ -37,7 +47,7 @@ LoginFrame::LoginFrame(wxWindow* parent, wxWindowID id, const wxString& title, c
 
 	panelSizer->Add(passwordSizer, 1, wxEXPAND, 5);
 
-	submitButton = new wxButton(mainPanel, wxID_ANY, wxT("Login"), wxDefaultPosition, wxDefaultSize, 0);
+	submitButton = new wxButton(mainPanel, SUBMIT_BTN, wxT("Login"), wxDefaultPosition, wxDefaultSize, 0);
 	panelSizer->Add(submitButton, 0, wxALL, 5);
 
 
@@ -55,4 +65,13 @@ LoginFrame::LoginFrame(wxWindow* parent, wxWindowID id, const wxString& title, c
 
 LoginFrame::~LoginFrame()
 {
+	delete this->loginController;
+	this->loginController = 0;
+}
+
+void LoginFrame::OnSubmitBtnClicked(wxCommandEvent& event) {
+	wxString usernameTxt = this->usernameField->GetValue();
+	wxString passwordTxt = this->passwordField->GetValue();
+	this->loginController->setCredentials(usernameTxt.ToStdString(), passwordTxt.ToStdString());
+	this->submitButton->SetLabel(this->loginController->getUsername());
 }
