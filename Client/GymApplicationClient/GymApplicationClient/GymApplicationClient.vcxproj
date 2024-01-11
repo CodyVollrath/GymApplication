@@ -127,10 +127,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="LoginController.cpp" />
+    <ClCompile Include="LoginDto.cpp" />
     <ClCompile Include="LoginFrame.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="LoginController.h" />
+    <ClInclude Include="LoginDto.h" />
     <ClInclude Include="LoginFrame.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

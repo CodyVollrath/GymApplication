@@ -16,6 +16,12 @@
     <Filter Include="Source Files\Views">
       <UniqueIdentifier>{399d3bce-d9d0-4205-8554-65593bad79c7}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Models">
+      <UniqueIdentifier>{9d80434a-25c9-44a3-98de-9fa89f108652}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Controllers">
+      <UniqueIdentifier>{ff2af8bb-cfc4-4870-a087-c1a31a412ef8}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -24,9 +30,21 @@
     <ClCompile Include="LoginFrame.cpp">
       <Filter>Source Files\Views</Filter>
     </ClCompile>
+    <ClCompile Include="LoginDto.cpp">
+      <Filter>Source Files\Models</Filter>
+    </ClCompile>
+    <ClCompile Include="LoginController.cpp">
+      <Filter>Source Files\Controllers</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="LoginFrame.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="LoginDto.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="LoginController.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
