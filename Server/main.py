@@ -23,6 +23,9 @@ def login():
         return response
     return 'error', 500
 
+@app.route('/api/test', methods=['GET'])
+def test():
+    return 'TEST'
 
 if __name__ == '__main__':
     app.run(debug=True)
