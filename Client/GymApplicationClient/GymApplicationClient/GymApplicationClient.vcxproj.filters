@@ -47,5 +47,8 @@
     <ClInclude Include="LoginController.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="HttpClient.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
