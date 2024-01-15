@@ -7,9 +7,11 @@ class User:
         self.lastName = lastName
         self.employeeId = employeeId
 
-    def to_json(self):
+    def to_json(self, auth = None):
         user_dict = dict(self.__dict__)
         user_dict.pop('password', None)
+        if auth is not None:
+            user_dict['authKey'] = auth
         return json.dumps(user_dict)
 
 class Users:
