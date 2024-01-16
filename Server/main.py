@@ -12,6 +12,8 @@ app_users.add_user(adminUser)
 def auth_verification(authKey: str):
     # If auth key is not set, is set but not in sessions, or is set and in sessions but ttl is expired
     if authKey is None or authKey not in sessions or int(sessions[authKey].timestamp()) < int(datetime.now().timestamp()):
+        if authKey in sessions:
+            sessions.pop(authKey)
         return False
     # renew expiration date
     new_exp = RequestAuth.renew_expiration()

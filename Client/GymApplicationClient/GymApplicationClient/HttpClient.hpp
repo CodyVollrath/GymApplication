@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include <curl/curl.h>
+#include <vector>
 
 class HttpClient {
 public:
@@ -16,20 +17,20 @@ public:
         curl_global_cleanup();
     }
 
-    std::string get(const std::string& url) {
-        return performRequest(url, HTTP_GET);
+    std::string get(const std::string& url, const std::vector<std::string>& headers = {}) {
+        return performRequest(url, HTTP_GET, "", headers);
     }
 
-    std::string post(const std::string& url, const std::string& data) {
-        return performRequest(url, HTTP_POST, data);
+    std::string post(const std::string& url, const std::string& data, const std::vector<std::string>& headers = {}) {
+        return performRequest(url, HTTP_POST, data, headers);
     }
 
-    std::string put(const std::string& url, const std::string& data) {
-        return performRequest(url, HTTP_PUT, data);
+    std::string put(const std::string& url, const std::string& data, const std::vector<std::string>& headers = {}) {
+        return performRequest(url, HTTP_PUT, data, headers);
     }
 
-    std::string del(const std::string& url) {
-        return performRequest(url, HTTP_DELETE);
+    std::string del(const std::string& url, const std::vector<std::string>& headers = {}) {
+        return performRequest(url, HTTP_DELETE, "", headers);
     }
 
 private:
@@ -48,7 +49,7 @@ private:
         return totalSize;
     }
 
-    std::string performRequest(const std::string& url, HttpRequestType type, const std::string& data = "") {
+    std::string performRequest(const std::string& url, HttpRequestType type, const std::string& data = "", const std::vector<std::string>& headers = {}) {
         if (!curl) {
             std::cerr << "cURL initialization failed." << std::endl;
             return "";
@@ -58,6 +59,14 @@ private:
 
         if (type == HTTP_POST || type == HTTP_PUT) {
             curl_easy_setopt(curl, CURLOPT_POSTFIELDS, data.c_str());
+        }
+
+        if (!headers.empty()) {
+            struct curl_slist* headerList = nullptr;
+            for (const auto& header : headers) {
+                headerList = curl_slist_append(headerList, header.c_str());
+            }
+            curl_easy_setopt(curl, CURLOPT_HTTPHEADER, headerList);
         }
 
         std::string response;
