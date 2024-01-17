@@ -73,5 +73,10 @@ void LoginFrame::OnSubmitBtnClicked(wxCommandEvent& event) {
 	wxString usernameTxt = this->usernameField->GetValue();
 	wxString passwordTxt = this->passwordField->GetValue();
 	this->loginController->setCredentials(usernameTxt.ToStdString(), passwordTxt.ToStdString());
-	this->submitButton->SetLabel(this->loginController->getUsername());
+	const string authToken = this->loginController->sendCredentials();
+	this->Close();
+
+	HomeFrame* homeFrame = new HomeFrame(nullptr, wxID_ANY, wxT("Home Frame"));
+	homeFrame->SetWelcomeLabel(authToken);
+	homeFrame->Show();
 }

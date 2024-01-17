@@ -106,7 +106,7 @@
       <ConformanceMode>true</ConformanceMode>
     </ClCompile>
     <Link>
-      <SubSystem>Console</SubSystem>
+      <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
   </ItemDefinitionGroup>
@@ -127,6 +127,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="homeFrame.cpp" />
     <ClCompile Include="HttpHandler.cpp" />
     <ClCompile Include="LoginController.cpp" />
     <ClCompile Include="LoginDto.cpp" />
@@ -134,6 +135,7 @@
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="homeFrame.h" />
     <ClInclude Include="HttpClient.hpp" />
     <ClInclude Include="HttpHandler.h" />
     <ClInclude Include="LoginController.h" />
