@@ -1,12 +1,5 @@
-///////////////////////////////////////////////////////////////////////////
-// C++ code generated with wxFormBuilder (version 3.10.1-0-g8feb16b3)
-// http://www.wxformbuilder.org/
-//
-// PLEASE DO *NOT* EDIT THIS FILE!
-///////////////////////////////////////////////////////////////////////////
 
 #pragma once
-
 #include <wx/artprov.h>
 #include <wx/xrc/xmlres.h>
 #include <wx/string.h>
@@ -27,20 +20,15 @@
 // Our Headers
 #include "LoginController.h"
 
+// Custom Events
+#include "TransitionEvent.h"
 
-///////////////////////////////////////////////////////////////////////////
-
-
-///////////////////////////////////////////////////////////////////////////////
-/// Class LoginFrame
-///////////////////////////////////////////////////////////////////////////////
 class LoginFrame : public wxFrame
 {
 private:
 	
 	LoginController* loginController;
 	void OnSubmitBtnClicked(wxCommandEvent& event);
-	void OnTransitionEvent(wxCommandEvent& event);
 
 	wxDECLARE_EVENT_TABLE();
 protected:
@@ -51,10 +39,10 @@ protected:
 	wxTextCtrl* passwordField;
 	wxButton* submitButton;
 	wxStaticText* errorLabel;
-
+	wxEvtHandler* transitionHandler;
 public:
 
-	LoginFrame(wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = wxEmptyString, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize(500, 300), long style = wxDEFAULT_FRAME_STYLE | wxTAB_TRAVERSAL);
+	LoginFrame(wxEvtHandler* transitionHandler, wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = wxEmptyString, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize(500, 300), long style = wxDEFAULT_FRAME_STYLE | wxTAB_TRAVERSAL);
 	
 	virtual ~LoginFrame();
 

@@ -4,16 +4,14 @@ enum ids {
 	SUBMIT_BTN = 1
 };
 
-wxDEFINE_EVENT(LOGIN_TRANSITION_EVENT, wxCommandEvent);
-wxDECLARE_EVENT(LOGIN_TRANSITION_EVENT, wxCommandEvent);
 
 wxBEGIN_EVENT_TABLE(LoginFrame, wxFrame)
 EVT_BUTTON(SUBMIT_BTN, LoginFrame::OnSubmitBtnClicked)
-EVT_COMMAND(wxID_ANY, LOGIN_TRANSITION_EVENT, LoginFrame::OnTransitionEvent)
 wxEND_EVENT_TABLE()
 
-LoginFrame::LoginFrame(wxWindow* parent, wxWindowID id, const wxString& title, const wxPoint& pos, const wxSize& size, long style) : wxFrame(parent, id, title, pos, size, style)
+LoginFrame::LoginFrame(wxEvtHandler* transitionHandler, wxWindow* parent, wxWindowID id, const wxString& title, const wxPoint& pos, const wxSize& size, long style) : wxFrame(parent, id, title, pos, size, style)
 {
+	this->transitionHandler = transitionHandler;
 	this->loginController = new LoginController();
 
 	this->SetSizeHints(wxDefaultSize, wxDefaultSize);
@@ -73,7 +71,7 @@ LoginFrame::LoginFrame(wxWindow* parent, wxWindowID id, const wxString& title, c
 LoginFrame::~LoginFrame()
 {
 	delete this->loginController;
-	this->loginController = 0;
+	this->loginController = nullptr;
 }
 
 void LoginFrame::OnSubmitBtnClicked(wxCommandEvent& event) {
@@ -82,16 +80,11 @@ void LoginFrame::OnSubmitBtnClicked(wxCommandEvent& event) {
 	this->loginController->setCredentials(usernameTxt.ToStdString(), passwordTxt.ToStdString());
 	bool isLoggingSuccessful = this->loginController->sendCredentials();
 	if (isLoggingSuccessful) {
-		// Emit event for transition
-		wxCommandEvent transitionEvent(LOGIN_TRANSITION_EVENT, wxID_ANY);
-		wxPostEvent(this, transitionEvent);
+		this->errorLabel->SetLabel("");
+		TransitionEvent evt(TransitionEnums::HOME_FRAME, TRANSITION_FRAME_EVENT);
+		wxPostEvent(this->transitionHandler, evt);
 	}
 	else {
 		this->errorLabel->SetLabel("Credentials are Incorrect!");
 	}
-
-}
-
-void LoginFrame::OnTransitionEvent(wxCommandEvent& event) {
-	this->Close();
 }

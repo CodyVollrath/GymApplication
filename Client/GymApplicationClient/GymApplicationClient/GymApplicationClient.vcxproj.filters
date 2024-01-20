@@ -25,11 +25,11 @@
     <Filter Include="Source Files\Utils">
       <UniqueIdentifier>{b66c0ad0-3641-46ee-82e5-bdad40702e2c}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Singletons">
-      <UniqueIdentifier>{dea6a313-b38a-467e-8aff-95e7e659db96}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Header Files\CustomEvents">
       <UniqueIdentifier>{df380228-cd79-4891-a42d-a896baf12ebd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Utils">
+      <UniqueIdentifier>{790234fc-9975-48ce-ac9d-d81c7289087a}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -45,9 +45,6 @@
     <ClCompile Include="LoginController.cpp">
       <Filter>Source Files\Controllers</Filter>
     </ClCompile>
-    <ClCompile Include="HttpHandler.cpp">
-      <Filter>Source Files\Utils</Filter>
-    </ClCompile>
     <ClCompile Include="HomeFrame.cpp">
       <Filter>Source Files\Views</Filter>
     </ClCompile>
@@ -60,8 +57,11 @@
     <ClCompile Include="HomeController.cpp">
       <Filter>Source Files\Controllers</Filter>
     </ClCompile>
+    <ClCompile Include="Router.cpp">
+      <Filter>Source Files\Utils</Filter>
+    </ClCompile>
     <ClCompile Include="Singletons.cpp">
-      <Filter>Source Files\Singletons</Filter>
+      <Filter>Source Files\Utils</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -77,9 +77,6 @@
     <ClInclude Include="HttpClient.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="HttpHandler.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="HomeFrame.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -89,14 +86,20 @@
     <ClInclude Include="User.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Singletons.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="HomeController.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="TransitionEvent.h">
       <Filter>Header Files\CustomEvents</Filter>
+    </ClInclude>
+    <ClInclude Include="GlobalEnums.hpp">
+      <Filter>Header Files\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="Singletons.h">
+      <Filter>Header Files\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="Router.h">
+      <Filter>Header Files\Utils</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

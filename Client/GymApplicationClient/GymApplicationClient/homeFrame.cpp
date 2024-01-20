@@ -11,13 +11,7 @@
 
 
 
-wxDEFINE_EVENT(LOGIN_TRANSITION_EVENT, wxCommandEvent);
-wxDECLARE_EVENT(LOGIN_TRANSITION_EVENT, wxCommandEvent);
-wxBEGIN_EVENT_TABLE(HomeFrame, wxFrame)
-EVT_COMMAND(wxID_ANY, LOGIN_TRANSITION_EVENT, HomeFrame::OnListenTransitionEvent)
-wxEND_EVENT_TABLE()
-
-HomeFrame::HomeFrame(wxWindow* parent, wxWindowID id, const wxString& title, const wxPoint& pos, const wxSize& size, long style) : wxFrame(parent, id, title, pos, size, style)
+HomeFrame::HomeFrame(wxEvtHandler* transitionHandler, wxWindow* parent, wxWindowID id, const wxString& title, const wxPoint& pos, const wxSize& size, long style) : wxFrame(parent, id, title, pos, size, style)
 {
 	this->SetSizeHints(wxDefaultSize, wxDefaultSize);
 
@@ -43,11 +37,6 @@ HomeFrame::HomeFrame(wxWindow* parent, wxWindowID id, const wxString& title, con
 	this->Layout();
 
 	this->Centre(wxBOTH);
-}
-
-void HomeFrame::OnListenTransitionEvent(wxCommandEvent& event) {
-	HomeFrame* homeFrame = new HomeFrame(nullptr, wxID_ANY, wxT("Home Frame"), wxDefaultPosition, wxDefaultSize, wxDEFAULT_FRAME_STYLE);
-	homeFrame->Show(true);
 }
 
 
