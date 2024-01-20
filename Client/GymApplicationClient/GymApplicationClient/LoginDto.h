@@ -1,4 +1,5 @@
 #include <string>
+#include <nlohmann/json.hpp>
 #pragma once
 
 using namespace std;
@@ -15,6 +16,7 @@ public:
 
 	void setUsername(const string& username);
 	void setPassword(const string& password);
+	string to_json();
 private:
 	string username;
 	string password;

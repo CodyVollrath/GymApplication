@@ -18,12 +18,18 @@ void LoginController::setCredentials(const string& username, const string& passw
 	
 }
 
-string LoginController::sendCredentials() {
-	const string payload = "{\"username\": \"" + this->loginDto->getUsername() + "\", \"password\": \"" + this->loginDto->getPassword() + "\"}";
+bool LoginController::sendCredentials() {
+	const string payload = this->loginDto->to_json();
 	const string authTokenRawJson = this->client->post("http://localhost:5000/api/login", payload, { "Content-Type: application/json" });
-	nlohmann::json authTokenJson = nlohmann::json::parse(authTokenRawJson);
-	const string token = authTokenJson["authKey"];
-	return token;
+	try {
+		nlohmann::json authTokenJson = nlohmann::json::parse(authTokenRawJson);
+		Singletons::setInstance(SignedUser(authTokenJson["username"], authTokenJson["firstName"], authTokenJson["lastName"], to_string(authTokenJson["employeeId"]), authTokenJson["authKey"]));
+		return true;
+	}
+	catch (exception) {
+		return false;
+	}
+	
 }
 
 const string& LoginController::getUsername() const {

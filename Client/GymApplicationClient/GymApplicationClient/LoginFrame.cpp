@@ -4,8 +4,12 @@ enum ids {
 	SUBMIT_BTN = 1
 };
 
+wxDEFINE_EVENT(LOGIN_TRANSITION_EVENT, wxCommandEvent);
+wxDECLARE_EVENT(LOGIN_TRANSITION_EVENT, wxCommandEvent);
+
 wxBEGIN_EVENT_TABLE(LoginFrame, wxFrame)
 EVT_BUTTON(SUBMIT_BTN, LoginFrame::OnSubmitBtnClicked)
+EVT_COMMAND(wxID_ANY, LOGIN_TRANSITION_EVENT, LoginFrame::OnTransitionEvent)
 wxEND_EVENT_TABLE()
 
 LoginFrame::LoginFrame(wxWindow* parent, wxWindowID id, const wxString& title, const wxPoint& pos, const wxSize& size, long style) : wxFrame(parent, id, title, pos, size, style)
@@ -41,12 +45,15 @@ LoginFrame::LoginFrame(wxWindow* parent, wxWindowID id, const wxString& title, c
 	passwordLbl->Wrap(-1);
 	passwordSizer->Add(passwordLbl, 0, wxALL, 5);
 
-	passwordField = new wxTextCtrl(mainPanel, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0);
+	passwordField = new wxTextCtrl(mainPanel, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxTE_PASSWORD);
 	passwordSizer->Add(passwordField, 0, wxALL, 5);
 
 
 	panelSizer->Add(passwordSizer, 1, wxEXPAND, 5);
 
+	this->errorLabel = new wxStaticText(mainPanel, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize);
+	panelSizer->Add(errorLabel);
+	
 	submitButton = new wxButton(mainPanel, SUBMIT_BTN, wxT("Login"), wxDefaultPosition, wxDefaultSize, 0);
 	panelSizer->Add(submitButton, 0, wxALL, 5);
 
@@ -73,10 +80,18 @@ void LoginFrame::OnSubmitBtnClicked(wxCommandEvent& event) {
 	wxString usernameTxt = this->usernameField->GetValue();
 	wxString passwordTxt = this->passwordField->GetValue();
 	this->loginController->setCredentials(usernameTxt.ToStdString(), passwordTxt.ToStdString());
-	const string authToken = this->loginController->sendCredentials();
-	this->Close();
+	bool isLoggingSuccessful = this->loginController->sendCredentials();
+	if (isLoggingSuccessful) {
+		// Emit event for transition
+		wxCommandEvent transitionEvent(LOGIN_TRANSITION_EVENT, wxID_ANY);
+		wxPostEvent(this, transitionEvent);
+	}
+	else {
+		this->errorLabel->SetLabel("Credentials are Incorrect!");
+	}
 
-	HomeFrame* homeFrame = new HomeFrame(nullptr, wxID_ANY, wxT("Home Frame"));
-	homeFrame->SetWelcomeLabel(authToken);
-	homeFrame->Show();
+}
+
+void LoginFrame::OnTransitionEvent(wxCommandEvent& event) {
+	this->Close();
 }

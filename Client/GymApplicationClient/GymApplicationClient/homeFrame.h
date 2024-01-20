@@ -15,6 +15,8 @@
 #include <string>
 using namespace std;
 
+#include "Singletons.h"
+
 ///////////////////////////////////////////////////////////////////////////
 
 
@@ -28,14 +30,13 @@ private:
 protected:
 	wxPanel* mainPanel;
 	wxStaticText* welcomelbl;
-
+	void OnListenTransitionEvent(wxCommandEvent& event);
+	wxDECLARE_EVENT_TABLE();
 public:
 
 	HomeFrame(wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = wxEmptyString, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize(500, 300), long style = wxDEFAULT_FRAME_STYLE | wxTAB_TRAVERSAL);
-
 	~HomeFrame();
 
-	void SetWelcomeLabel(const string& labelData);
 };
 
 #endif //__NONAME_H__

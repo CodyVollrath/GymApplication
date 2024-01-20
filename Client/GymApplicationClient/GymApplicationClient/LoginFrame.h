@@ -26,7 +26,7 @@
 
 // Our Headers
 #include "LoginController.h"
-#include "homeFrame.h"
+
 
 ///////////////////////////////////////////////////////////////////////////
 
@@ -37,8 +37,11 @@
 class LoginFrame : public wxFrame
 {
 private:
+	
 	LoginController* loginController;
 	void OnSubmitBtnClicked(wxCommandEvent& event);
+	void OnTransitionEvent(wxCommandEvent& event);
+
 	wxDECLARE_EVENT_TABLE();
 protected:
 	wxPanel* mainPanel;
@@ -47,12 +50,13 @@ protected:
 	wxStaticText* passwordLbl;
 	wxTextCtrl* passwordField;
 	wxButton* submitButton;
+	wxStaticText* errorLabel;
 
 public:
 
 	LoginFrame(wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = wxEmptyString, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize(500, 300), long style = wxDEFAULT_FRAME_STYLE | wxTAB_TRAVERSAL);
-
-	~LoginFrame();
+	
+	virtual ~LoginFrame();
 
 };
 

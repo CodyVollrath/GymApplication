@@ -25,6 +25,12 @@
     <Filter Include="Source Files\Utils">
       <UniqueIdentifier>{b66c0ad0-3641-46ee-82e5-bdad40702e2c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Singletons">
+      <UniqueIdentifier>{dea6a313-b38a-467e-8aff-95e7e659db96}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\CustomEvents">
+      <UniqueIdentifier>{df380228-cd79-4891-a42d-a896baf12ebd}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -42,8 +48,20 @@
     <ClCompile Include="HttpHandler.cpp">
       <Filter>Source Files\Utils</Filter>
     </ClCompile>
-    <ClCompile Include="homeFrame.cpp">
+    <ClCompile Include="HomeFrame.cpp">
       <Filter>Source Files\Views</Filter>
+    </ClCompile>
+    <ClCompile Include="SignedUser.cpp">
+      <Filter>Source Files\Models</Filter>
+    </ClCompile>
+    <ClCompile Include="User.cpp">
+      <Filter>Source Files\Models</Filter>
+    </ClCompile>
+    <ClCompile Include="HomeController.cpp">
+      <Filter>Source Files\Controllers</Filter>
+    </ClCompile>
+    <ClCompile Include="Singletons.cpp">
+      <Filter>Source Files\Singletons</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -62,8 +80,23 @@
     <ClInclude Include="HttpHandler.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="homeFrame.h">
+    <ClInclude Include="HomeFrame.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SignedUser.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="User.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Singletons.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="HomeController.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TransitionEvent.h">
+      <Filter>Header Files\CustomEvents</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

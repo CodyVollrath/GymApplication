@@ -127,20 +127,29 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="homeFrame.cpp" />
+    <ClCompile Include="HomeController.cpp" />
+    <ClCompile Include="HomeFrame.cpp" />
     <ClCompile Include="HttpHandler.cpp" />
     <ClCompile Include="LoginController.cpp" />
     <ClCompile Include="LoginDto.cpp" />
     <ClCompile Include="LoginFrame.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="SignedUser.cpp" />
+    <ClCompile Include="Singletons.cpp" />
+    <ClCompile Include="User.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="homeFrame.h" />
+    <ClInclude Include="HomeController.h" />
+    <ClInclude Include="Singletons.h" />
+    <ClInclude Include="HomeFrame.h" />
     <ClInclude Include="HttpClient.hpp" />
     <ClInclude Include="HttpHandler.h" />
     <ClInclude Include="LoginController.h" />
     <ClInclude Include="LoginDto.h" />
     <ClInclude Include="LoginFrame.h" />
+    <ClInclude Include="SignedUser.h" />
+    <ClInclude Include="TransitionEvent.h" />
+    <ClInclude Include="User.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
