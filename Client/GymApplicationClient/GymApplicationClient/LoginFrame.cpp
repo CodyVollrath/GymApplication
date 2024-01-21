@@ -4,12 +4,14 @@ enum ids {
 	SUBMIT_BTN = 1
 };
 
+
 wxBEGIN_EVENT_TABLE(LoginFrame, wxFrame)
 EVT_BUTTON(SUBMIT_BTN, LoginFrame::OnSubmitBtnClicked)
 wxEND_EVENT_TABLE()
 
-LoginFrame::LoginFrame(wxWindow* parent, wxWindowID id, const wxString& title, const wxPoint& pos, const wxSize& size, long style) : wxFrame(parent, id, title, pos, size, style)
+LoginFrame::LoginFrame(wxEvtHandler* transitionHandler, wxWindow* parent, wxWindowID id, const wxString& title, const wxPoint& pos, const wxSize& size, long style) : wxFrame(parent, id, title, pos, size, style)
 {
+	this->transitionHandler = transitionHandler;
 	this->loginController = new LoginController();
 
 	this->SetSizeHints(wxDefaultSize, wxDefaultSize);
@@ -41,12 +43,15 @@ LoginFrame::LoginFrame(wxWindow* parent, wxWindowID id, const wxString& title, c
 	passwordLbl->Wrap(-1);
 	passwordSizer->Add(passwordLbl, 0, wxALL, 5);
 
-	passwordField = new wxTextCtrl(mainPanel, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0);
+	passwordField = new wxTextCtrl(mainPanel, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxTE_PASSWORD);
 	passwordSizer->Add(passwordField, 0, wxALL, 5);
 
 
 	panelSizer->Add(passwordSizer, 1, wxEXPAND, 5);
 
+	this->errorLabel = new wxStaticText(mainPanel, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize);
+	panelSizer->Add(errorLabel);
+	
 	submitButton = new wxButton(mainPanel, SUBMIT_BTN, wxT("Login"), wxDefaultPosition, wxDefaultSize, 0);
 	panelSizer->Add(submitButton, 0, wxALL, 5);
 
@@ -66,17 +71,20 @@ LoginFrame::LoginFrame(wxWindow* parent, wxWindowID id, const wxString& title, c
 LoginFrame::~LoginFrame()
 {
 	delete this->loginController;
-	this->loginController = 0;
+	this->loginController = nullptr;
 }
 
 void LoginFrame::OnSubmitBtnClicked(wxCommandEvent& event) {
 	wxString usernameTxt = this->usernameField->GetValue();
 	wxString passwordTxt = this->passwordField->GetValue();
 	this->loginController->setCredentials(usernameTxt.ToStdString(), passwordTxt.ToStdString());
-	const string authToken = this->loginController->sendCredentials();
-	this->Close();
-
-	HomeFrame* homeFrame = new HomeFrame(nullptr, wxID_ANY, wxT("Home Frame"));
-	homeFrame->SetWelcomeLabel(authToken);
-	homeFrame->Show();
+	bool isLoggingSuccessful = this->loginController->sendCredentials();
+	if (isLoggingSuccessful) {
+		this->errorLabel->SetLabel("");
+		TransitionEvent evt(TransitionEnums::HOME_FRAME, TRANSITION_FRAME_EVENT);
+		wxPostEvent(this->transitionHandler, evt);
+	}
+	else {
+		this->errorLabel->SetLabel("Credentials are Incorrect!");
+	}
 }

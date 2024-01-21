@@ -28,3 +28,10 @@ void LoginDto::setUsername(const string& username) {
 void LoginDto::setPassword(const string& password) {
 	this->password = password;
 }
+
+string LoginDto::to_json() {
+	nlohmann::json loginDto;
+	loginDto["username"] = this->username;
+	loginDto["password"] = this->password;
+	return loginDto.dump();
+}

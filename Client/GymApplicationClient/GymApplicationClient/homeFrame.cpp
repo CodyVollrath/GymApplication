@@ -5,11 +5,13 @@
 // PLEASE DO "NOT" EDIT THIS FILE!
 ///////////////////////////////////////////////////////////////////////////
 
-#include "homeFrame.h"
+#include "HomeFrame.h"
 
 ///////////////////////////////////////////////////////////////////////////
 
-HomeFrame::HomeFrame(wxWindow* parent, wxWindowID id, const wxString& title, const wxPoint& pos, const wxSize& size, long style) : wxFrame(parent, id, title, pos, size, style)
+
+
+HomeFrame::HomeFrame(wxEvtHandler* transitionHandler, wxWindow* parent, wxWindowID id, const wxString& title, const wxPoint& pos, const wxSize& size, long style) : wxFrame(parent, id, title, pos, size, style)
 {
 	this->SetSizeHints(wxDefaultSize, wxDefaultSize);
 
@@ -37,10 +39,8 @@ HomeFrame::HomeFrame(wxWindow* parent, wxWindowID id, const wxString& title, con
 	this->Centre(wxBOTH);
 }
 
-void HomeFrame::SetWelcomeLabel(const string& labelData) {
-	this->welcomelbl->SetLabel(labelData);
-}
 
 HomeFrame::~HomeFrame()
 {
+
 }
