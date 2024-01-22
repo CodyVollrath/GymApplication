@@ -31,6 +31,15 @@
     <Filter Include="Header Files\Utils">
       <UniqueIdentifier>{790234fc-9975-48ce-ac9d-d81c7289087a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Models">
+      <UniqueIdentifier>{1a35f16c-09a3-4b1b-83b4-8d7f1bf49549}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Views">
+      <UniqueIdentifier>{67338b35-b3c9-4b9c-9b26-15c30b14064e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Controllers">
+      <UniqueIdentifier>{f93c0659-806c-4e76-9aa6-5246ec69701a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -65,30 +74,6 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="LoginFrame.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="LoginDto.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="LoginController.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="HttpClient.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="HomeFrame.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="SignedUser.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="User.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="HomeController.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="TransitionEvent.h">
       <Filter>Header Files\CustomEvents</Filter>
     </ClInclude>
@@ -100,6 +85,30 @@
     </ClInclude>
     <ClInclude Include="Router.h">
       <Filter>Header Files\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="LoginController.h">
+      <Filter>Header Files\Controllers</Filter>
+    </ClInclude>
+    <ClInclude Include="HomeController.h">
+      <Filter>Header Files\Controllers</Filter>
+    </ClInclude>
+    <ClInclude Include="HttpClient.hpp">
+      <Filter>Header Files\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="User.h">
+      <Filter>Header Files\Models</Filter>
+    </ClInclude>
+    <ClInclude Include="SignedUser.h">
+      <Filter>Header Files\Models</Filter>
+    </ClInclude>
+    <ClInclude Include="LoginDto.h">
+      <Filter>Header Files\Models</Filter>
+    </ClInclude>
+    <ClInclude Include="LoginFrame.h">
+      <Filter>Header Files\Views</Filter>
+    </ClInclude>
+    <ClInclude Include="HomeFrame.h">
+      <Filter>Header Files\Views</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
