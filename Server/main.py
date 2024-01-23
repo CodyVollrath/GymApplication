@@ -60,8 +60,7 @@ def create_user():
 @app.route('/api/test', methods=['GET'])
 def test():
     print('Started')
-    token = request.headers['auth']
-    if not auth_verification(token, request):
+    if not auth_verification(request):
         return 'Not Authorized', 401
     return 'Ok', 200
 
