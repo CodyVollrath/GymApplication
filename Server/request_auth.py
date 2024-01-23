@@ -15,7 +15,7 @@ class RequestAuth:
     def renew_expiration(t_delta_mins = 45):
         return datetime.now() + timedelta(minutes=t_delta_mins)
     def is_expired(self):
-        return datetime.now() >= self.expiration
+        return int(datetime.now().timestamp()) >= int(self.expiration.timestamp())
     def __repr__(self):
         return self.authKey
 

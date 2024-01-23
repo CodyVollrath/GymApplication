@@ -1,11 +1,15 @@
 import json
 class User:
-    def __init__(self, username, password, employeeId, firstName = None, lastName = None):
+    def __init__(self, username, password, employeeId, firstName = None, lastName = None, isAdmin = False):
         self.username = username
         self.password = password
         self.firstName = firstName
         self.lastName = lastName
         self.employeeId = employeeId
+        self.isAdmin = isAdmin
+
+    def __hash__(self):
+        return hash(self.employeeId)
 
     def to_json(self, auth = None):
         user_dict = dict(self.__dict__)
@@ -17,11 +21,14 @@ class User:
 class Users:
 
     def __init__(self):
-        self.users = []
+        self.users = set()
 
-    def add_user(self, user):
-        if self.check_login(user.username, user.password) is None:
-            self.users.append(user)
+    def add_user(self, user) -> bool:
+        isUsernameInUsers = user.username in set([curr_user.username for curr_user in self.users])
+        if not isUsernameInUsers:
+            self.users.add(user)
+            return True
+        return False
 
     def check_login(self, username, password):
         '''
