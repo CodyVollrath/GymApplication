@@ -137,6 +137,7 @@
     <ClCompile Include="SignedUser.cpp" />
     <ClCompile Include="Singletons.cpp" />
     <ClCompile Include="User.cpp" />
+    <ClCompile Include="UsersFrame.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="HomeController.h" />
@@ -151,6 +152,7 @@
     <ClInclude Include="GlobalEnums.hpp" />
     <ClInclude Include="TransitionEvent.h" />
     <ClInclude Include="User.h" />
+    <ClInclude Include="UsersFrame.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

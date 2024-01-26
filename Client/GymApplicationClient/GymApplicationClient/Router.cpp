@@ -45,6 +45,10 @@ void Router::displaySelectedFrame(TransitionEnums transitionFrame) {
 		this->currentFrame = new HomeFrame(this, NULL, wxID_ANY, "Home", wxDefaultPosition, wxDefaultSize);
 		this->currentFrame->Show();
 		break;
+	case (TransitionEnums::USERS_FRAME):
+		this->currentFrame = new UsersFrame(this, NULL, wxID_ANY, "Users", wxDefaultPosition, wxDefaultSize);
+		this->currentFrame->Show();
+		break;
 	default:
 		throw runtime_error("INVALID FRAME ENUMURATION");
 	}

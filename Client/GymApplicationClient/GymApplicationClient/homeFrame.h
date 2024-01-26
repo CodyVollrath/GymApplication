@@ -4,6 +4,8 @@
 #include <wx/string.h>
 #include <wx/stattext.h>
 #include <wx/gdicmn.h>
+#include <wx/menu.h>
+#include <wx/button.h>
 #include <wx/font.h>
 #include <wx/colour.h>
 #include <wx/settings.h>
@@ -21,10 +23,18 @@ using namespace std;
 class HomeFrame : public wxFrame
 {
 private:
+	void OnUserBtnClick(wxCommandEvent& event);
+	wxDECLARE_EVENT_TABLE();
 
 protected:
+	wxMenuBar* menuBar;
+	wxMenu* fileMenuBtn;
+	wxMenu* viewMenuBtn;
+	wxMenu* aboutMenuBtn;
+	wxMenu* dataMenuBtn;
 	wxPanel* mainPanel;
-	wxStaticText* welcomelbl;
+	wxButton* crateUserBtn;
+	wxEvtHandler* transitionHandler;
 public:
 
 	HomeFrame(wxEvtHandler* transitionHandler, wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = wxEmptyString, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize(500, 300), long style = wxDEFAULT_FRAME_STYLE | wxTAB_TRAVERSAL);
