@@ -72,6 +72,9 @@
     <ClCompile Include="Singletons.cpp">
       <Filter>Source Files\Utils</Filter>
     </ClCompile>
+    <ClCompile Include="UsersFrame.cpp">
+      <Filter>Source Files\Views</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="TransitionEvent.h">
@@ -109,6 +112,9 @@
     </ClInclude>
     <ClInclude Include="HomeFrame.h">
       <Filter>Header Files\Views</Filter>
+    </ClInclude>
+    <ClInclude Include="UsersFrame.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
