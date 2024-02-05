@@ -40,6 +40,12 @@
     <Filter Include="Header Files\Controllers">
       <UniqueIdentifier>{f93c0659-806c-4e76-9aa6-5246ec69701a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Views\Modals">
+      <UniqueIdentifier>{0d2cc28e-12bd-448c-8f21-0eb64fed5742}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Views\Modals">
+      <UniqueIdentifier>{28ae132c-f26c-48b9-93a7-8c0f6c185819}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -74,6 +80,9 @@
     </ClCompile>
     <ClCompile Include="UsersFrame.cpp">
       <Filter>Source Files\Views</Filter>
+    </ClCompile>
+    <ClCompile Include="Popup.cpp">
+      <Filter>Source Files\Views\Modals</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -114,7 +123,10 @@
       <Filter>Header Files\Views</Filter>
     </ClInclude>
     <ClInclude Include="UsersFrame.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Views</Filter>
+    </ClInclude>
+    <ClInclude Include="Popup.h">
+      <Filter>Header Files\Views\Modals</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
