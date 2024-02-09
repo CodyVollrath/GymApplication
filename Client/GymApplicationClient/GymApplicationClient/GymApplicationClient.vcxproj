@@ -133,6 +133,7 @@
     <ClCompile Include="LoginDto.cpp" />
     <ClCompile Include="LoginFrame.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Popup.cpp" />
     <ClCompile Include="Router.cpp" />
     <ClCompile Include="SignedUser.cpp" />
     <ClCompile Include="Singletons.cpp" />
@@ -141,6 +142,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="HomeController.h" />
+    <ClInclude Include="Popup.h" />
     <ClInclude Include="Router.h" />
     <ClInclude Include="Singletons.h" />
     <ClInclude Include="HomeFrame.h" />

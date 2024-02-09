@@ -46,7 +46,7 @@ void Router::displaySelectedFrame(TransitionEnums transitionFrame) {
 		this->currentFrame->Show();
 		break;
 	case (TransitionEnums::USERS_FRAME):
-		this->currentFrame = new UsersFrame(this, NULL, wxID_ANY, "Users", wxDefaultPosition, wxDefaultSize);
+		this->currentFrame = new UsersFrame(this, NULL, wxID_ANY, "Users", wxDefaultPosition, wxSize(1000, 500));
 		this->currentFrame->Show();
 		break;
 	default:
